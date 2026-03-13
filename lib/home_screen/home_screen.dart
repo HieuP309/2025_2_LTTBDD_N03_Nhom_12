@@ -22,25 +22,6 @@ class HomeScreen extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
 
-      // nav bar
-      bottomNavigationBar: BottomNavigationBar(
-        currentIndex: 1,
-        items: const [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.settings),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: '',
-          ),
-        ],
-      ),
-
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.all(16),
