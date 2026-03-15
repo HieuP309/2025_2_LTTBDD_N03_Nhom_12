@@ -108,9 +108,68 @@ class _HomeScreenState extends State<HomeScreen> {
                         itemBuilder: (context, index) {
                           final e = expenses[index];
 
-                          return ExpenseRow(
-                            name: e["name"],
-                            money: e["money"].toString(),
+                          return Dismissible(
+                            key: Key(e["id"].toString()),
+                            direction:
+                                DismissDirection.endToStart,
+                            background: Container(
+                              color: Colors.red,
+                              alignment:
+                                  Alignment.centerRight,
+                              padding:
+                                  const EdgeInsets.only(
+                                    right: 20,
+                                  ),
+                              child: const Icon(
+                                Icons.delete,
+                                color: Colors.white,
+                              ),
+                            ),
+                            confirmDismiss: (direction) async {
+                              return await showDialog(
+                                context: context,
+                                builder: (BuildContext context) {
+                                  return AlertDialog(
+                                    title: const Text(
+                                      'Xác nhận xóa',
+                                    ),
+                                    content: const Text(
+                                      'Bạn có chắc muốn xóa bản ghi này?',
+                                    ),
+                                    actions: <Widget>[
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.of(
+                                              context,
+                                            ).pop(false),
+                                        child: const Text(
+                                          'Hủy',
+                                        ),
+                                      ),
+                                      TextButton(
+                                        onPressed: () =>
+                                            Navigator.of(
+                                              context,
+                                            ).pop(true),
+                                        child: const Text(
+                                          'Xóa',
+                                        ),
+                                      ),
+                                    ],
+                                  );
+                                },
+                              );
+                            },
+                            onDismissed: (direction) async {
+                              await DBHelper.deleteExpense(
+                                e["id"],
+                              );
+                              loadExpenses();
+                            },
+                            child: ExpenseRow(
+                              name: e["name"],
+                              money: e["money"].toString(),
+                            ),
                           );
                         },
                       ),

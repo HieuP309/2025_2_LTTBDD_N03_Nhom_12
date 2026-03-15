@@ -58,4 +58,14 @@ class DBHelper {
       "money": money,
     });
   }
+
+  static Future deleteExpense(int id) async {
+    final dbClient = await db;
+
+    await dbClient.delete(
+      "expenses",
+      where: "id = ?",
+      whereArgs: [id],
+    );
+  }
 }
