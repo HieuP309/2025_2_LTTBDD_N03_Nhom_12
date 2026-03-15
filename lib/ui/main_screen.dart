@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_quanlychitieu/about_screen/about_screen.dart';
+import 'about_screen/about_screen.dart';
 import 'home_screen/home_screen.dart';
 import 'setting_screen/setting_screen.dart';
 
