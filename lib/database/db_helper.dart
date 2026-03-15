@@ -37,6 +37,16 @@ class DBHelper {
     );
   }
 
+  static Future<List<Map<String, dynamic>>>
+  getExpenses() async {
+    final dbClient = await db;
+
+    return await dbClient.query(
+      "expenses",
+      orderBy: "id DESC",
+    );
+  }
+
   static Future<int> insertExpense(
     String name,
     int money,

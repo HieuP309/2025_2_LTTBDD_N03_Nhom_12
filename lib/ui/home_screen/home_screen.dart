@@ -1,9 +1,39 @@
 import 'package:flutter/material.dart';
+import '../../database/db_helper.dart';
 import 'add_expense_screen.dart';
 import 'expense_row.dart';
 
-class HomeScreen extends StatelessWidget {
+class HomeScreen extends StatefulWidget {
   const HomeScreen({super.key});
+
+  @override
+  State<HomeScreen> createState() => _HomeScreenState();
+}
+
+class _HomeScreenState extends State<HomeScreen> {
+  List expenses = [];
+  int total = 0;
+
+  loadExpenses() async {
+    final data = await DBHelper.getExpenses();
+
+    int sum = 0;
+
+    for (var e in data) {
+      sum += e["money"] as int;
+    }
+
+    setState(() {
+      expenses = data;
+      total = sum;
+    });
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    loadExpenses();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -15,16 +45,17 @@ class HomeScreen extends StatelessWidget {
         212,
       ),
 
-      // nút add chi tiêu mới
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          Navigator.push(
+        onPressed: () async {
+          await Navigator.push(
             context,
             MaterialPageRoute(
               builder: (context) =>
                   const AddExpenseScreen(),
             ),
           );
+
+          loadExpenses();
         },
         child: const Icon(Icons.add),
       ),
@@ -34,16 +65,14 @@ class HomeScreen extends StatelessWidget {
           padding: const EdgeInsets.all(16),
           child: Column(
             children: [
-              // ====== CARD TỔNG CHI ======
               Container(
                 child: Column(
                   crossAxisAlignment:
                       CrossAxisAlignment.start,
                   children: [
-                    // Tiêu đề
-                    const Text(
-                      "Tổng chi:",
-                      style: TextStyle(
+                    Text(
+                      "Tổng chi: $total đ",
+                      style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
                       ),
@@ -51,7 +80,6 @@ class HomeScreen extends StatelessWidget {
 
                     const SizedBox(height: 16),
 
-                    // Header bảng
                     Row(
                       mainAxisAlignment:
                           MainAxisAlignment.spaceBetween,
@@ -73,24 +101,18 @@ class HomeScreen extends StatelessWidget {
 
                     const Divider(),
 
-                    // danh sách tạm để show ui
                     SizedBox(
                       height: 200,
-                      child: ListView(
-                        children: const [
-                          ExpenseRow(
-                            name: "Ăn uống",
-                            money: "200k",
-                          ),
-                          ExpenseRow(
-                            name: "Đi lại",
-                            money: "100k",
-                          ),
-                          ExpenseRow(
-                            name: "Mua sắm",
-                            money: "500k",
-                          ),
-                        ],
+                      child: ListView.builder(
+                        itemCount: expenses.length,
+                        itemBuilder: (context, index) {
+                          final e = expenses[index];
+
+                          return ExpenseRow(
+                            name: e["name"],
+                            money: e["money"].toString(),
+                          );
+                        },
                       ),
                     ),
                   ],
