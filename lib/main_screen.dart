@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quanlychitieu/about_screen/about_screen.dart';
 import 'home_screen/home_screen.dart';
 import 'setting_screen/setting_screen.dart';
 
@@ -15,6 +16,7 @@ class _MainScreenState extends State<MainScreen> {
   final List<Widget> _screens = [
     SettingScreen(),
     HomeScreen(),
+    AboutScreen(),
   ];
 
   void _onTap(int index) {
@@ -46,7 +48,7 @@ class _MainScreenState extends State<MainScreen> {
 
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
-            label: "About us",
+            label: "About me",
           ),
         ],
       ),
