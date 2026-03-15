@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'add_expense_screen.dart';
 import 'expense_row.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -17,7 +18,13 @@ class HomeScreen extends StatelessWidget {
       // nút add chi tiêu mới
       floatingActionButton: FloatingActionButton(
         onPressed: () {
-          // thêm logic xử lý khi bấm nút
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) =>
+                  const AddExpenseScreen(),
+            ),
+          );
         },
         child: const Icon(Icons.add),
       ),
