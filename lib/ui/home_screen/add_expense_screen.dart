@@ -13,12 +13,15 @@ class _AddExpenseScreenState
     extends State<AddExpenseScreen> {
   final nameController = TextEditingController();
   final moneyController = TextEditingController();
+  final noteController = TextEditingController();
 
   saveExpense() async {
     String name = nameController.text;
     int money = int.parse(moneyController.text);
+    String date = DateTime.now().toIso8601String();
+    String note = noteController.text;
 
-    await DBHelper.insertExpense(name, money);
+    await DBHelper.insertExpense(name, money, date, note);
 
     Navigator.pop(context); // quay lại home
   }
@@ -46,6 +49,16 @@ class _AddExpenseScreenState
               keyboardType: TextInputType.number,
               decoration: const InputDecoration(
                 labelText: "Số tiền",
+                border: OutlineInputBorder(),
+              ),
+            ),
+
+            const SizedBox(height: 16),
+
+            TextField(
+              controller: noteController,
+              decoration: const InputDecoration(
+                labelText: "Ghi chú (tùy chọn)",
                 border: OutlineInputBorder(),
               ),
             ),

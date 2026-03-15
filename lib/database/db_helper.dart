@@ -17,7 +17,7 @@ class DBHelper {
 
     String path = join(
       await databaseFactory.getDatabasesPath(),
-      "expense.db",
+      "expense_v2.db",
     );
 
     return await databaseFactory.openDatabase(
@@ -29,7 +29,9 @@ class DBHelper {
         CREATE TABLE expenses(
           id INTEGER PRIMARY KEY AUTOINCREMENT,
           name TEXT,
-          money INTEGER
+          money INTEGER,
+          date TEXT,
+          note TEXT
         )
         ''');
         },
@@ -50,12 +52,16 @@ class DBHelper {
   static Future<int> insertExpense(
     String name,
     int money,
+    String date,
+    String note,
   ) async {
     final dbClient = await db;
 
     return await dbClient.insert("expenses", {
       "name": name,
       "money": money,
+      "date": date,
+      "note": note,
     });
   }
 

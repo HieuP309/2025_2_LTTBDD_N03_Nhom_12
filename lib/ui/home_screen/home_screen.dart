@@ -96,6 +96,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             fontWeight: FontWeight.bold,
                           ),
                         ),
+                        Text(
+                          "Ngày",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
                       ],
                     ),
 
@@ -169,6 +175,12 @@ class _HomeScreenState extends State<HomeScreen> {
                             child: ExpenseRow(
                               name: e["name"],
                               money: e["money"].toString(),
+                              date:
+                                  DateTime.parse(e["date"])
+                                      .toLocal()
+                                      .toString()
+                                      .split(' ')[0],
+                              note: e["note"],
                             ),
                           );
                         },
