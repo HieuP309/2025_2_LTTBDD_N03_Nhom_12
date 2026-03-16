@@ -141,7 +141,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                     ),
                     Expanded(
-                      flex: 2,
+                      flex: 3,
                       child: Text(
                         l10n.amount,
                         style: const TextStyle(
@@ -149,19 +149,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           fontSize: 16,
                           color: Color(0xFF2196F3),
                         ),
-                        textAlign: TextAlign.center,
-                      ),
-                    ),
-                    Expanded(
-                      flex: 2,
-                      child: Text(
-                        l10n.date,
-                        style: const TextStyle(
-                          fontWeight: FontWeight.bold,
-                          fontSize: 16,
-                          color: Color(0xFF2196F3),
-                        ),
-                        textAlign: TextAlign.center,
+                        textAlign: TextAlign.right,
                       ),
                     ),
                   ],
