@@ -32,47 +32,101 @@ class _AddExpenseScreenState
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
-      appBar: AppBar(title: Text(l10n.addExpense)),
-      body: Padding(
-        padding: const EdgeInsets.all(16),
-        child: Column(
-          children: [
-            TextField(
-              controller: nameController,
-              decoration: InputDecoration(
-                labelText: l10n.expenseName,
-                border: const OutlineInputBorder(),
+      appBar: AppBar(
+        title: Text(l10n.addExpense),
+        elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        child: Padding(
+          padding: const EdgeInsets.all(24),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(height: 20),
+              Text(
+                'Thêm khoản chi mới',
+                style: TextStyle(
+                  fontSize: 24,
+                  fontWeight: FontWeight.bold,
+                  color: Theme.of(context).primaryColor,
+                ),
               ),
-            ),
-
-            const SizedBox(height: 16),
-
-            TextField(
-              controller: moneyController,
-              keyboardType: TextInputType.number,
-              decoration: InputDecoration(
-                labelText: l10n.expenseAmount,
-                border: const OutlineInputBorder(),
+              const SizedBox(height: 8),
+              Text(
+                'Điền thông tin chi tiêu của bạn',
+                style: TextStyle(
+                  fontSize: 16,
+                  color: Colors.grey[600],
+                ),
               ),
-            ),
+              const SizedBox(height: 32),
 
-            const SizedBox(height: 16),
-
-            TextField(
-              controller: noteController,
-              decoration: InputDecoration(
-                labelText: l10n.noteOptional,
-                border: const OutlineInputBorder(),
+              // Expense name field
+              TextField(
+                controller: nameController,
+                decoration: InputDecoration(
+                  labelText: l10n.expenseName,
+                  hintText: 'Ví dụ: Ăn uống, Di chuyển...',
+                  prefixIcon: const Icon(Icons.category),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
               ),
-            ),
 
-            const SizedBox(height: 20),
+              const SizedBox(height: 20),
 
-            ElevatedButton(
-              onPressed: saveExpense,
-              child: Text(l10n.save),
-            ),
-          ],
+              // Amount field
+              TextField(
+                controller: moneyController,
+                keyboardType: TextInputType.number,
+                decoration: InputDecoration(
+                  labelText: l10n.expenseAmount,
+                  hintText: 'Nhập số tiền (VNĐ)',
+                  prefixIcon: const Icon(Icons.attach_money),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+
+              // Note field
+              TextField(
+                controller: noteController,
+                maxLines: 3,
+                decoration: InputDecoration(
+                  labelText: l10n.noteOptional,
+                  hintText: 'Thêm ghi chú nếu cần...',
+                  prefixIcon: const Icon(Icons.note),
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 40),
+
+              // Save button
+              SizedBox(
+                width: double.infinity,
+                child: ElevatedButton.icon(
+                  onPressed: saveExpense,
+                  icon: const Icon(Icons.save),
+                  label: Text(l10n.save),
+                  style: ElevatedButton.styleFrom(
+                    padding: const EdgeInsets.symmetric(vertical: 16),
+                    shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(12),
+                    ),
+                  ),
+                ),
+              ),
+
+              const SizedBox(height: 20),
+            ],
+          ),
         ),
       ),
     );
