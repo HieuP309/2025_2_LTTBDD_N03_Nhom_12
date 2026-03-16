@@ -21,5 +21,14 @@
   "save": "Save",
   "group12": "Group 12",
   "name": "Nguyen Van Hieu",
-  "studentId": "ID: 21012058"
+  "studentId": "ID: 21012058",
+  "appSettings": "App Settings",
+  "customizeExperience": "Customize your experience",
+  "totalExpensesCount": "Total expenses: {count}",
+  "personalExpenseManager": "Personal expense management application",
+  "addNewExpense": "Add new expense",
+  "fillExpenseInfo": "Fill in your expense information",
+  "expenseExample": "Example: Food, Transportation...",
+  "enterAmountVND": "Enter amount (VND)",
+  "addNoteIfNeeded": "Add note if needed..."
 }

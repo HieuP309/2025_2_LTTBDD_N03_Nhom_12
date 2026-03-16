@@ -70,14 +70,18 @@ class _HomeScreenState extends State<HomeScreen> {
                   padding: const EdgeInsets.all(20),
                   decoration: BoxDecoration(
                     gradient: const LinearGradient(
-                      colors: [Color(0xFF2196F3), Color(0xFF21CBF3)],
+                      colors: [
+                        Color(0xFF2196F3),
+                        Color(0xFF21CBF3),
+                      ],
                       begin: Alignment.topLeft,
                       end: Alignment.bottomRight,
                     ),
                     borderRadius: BorderRadius.circular(16),
                   ),
                   child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                    crossAxisAlignment:
+                        CrossAxisAlignment.start,
                     children: [
                       Text(
                         l10n.totalExpense(total),
@@ -89,7 +93,9 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       const SizedBox(height: 8),
                       Text(
-                        'Tổng số khoản chi: ${expenses.length}',
+                        l10n.totalExpensesCount(
+                          expenses.length,
+                        ),
                         style: const TextStyle(
                           fontSize: 14,
                           color: Colors.white70,
@@ -104,7 +110,10 @@ class _HomeScreenState extends State<HomeScreen> {
 
               // Header row
               Container(
-                padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 12,
+                ),
                 decoration: BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.circular(12),
@@ -117,7 +126,8 @@ class _HomeScreenState extends State<HomeScreen> {
                   ],
                 ),
                 child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment:
+                      MainAxisAlignment.spaceBetween,
                   children: [
                     Expanded(
                       flex: 3,
@@ -165,7 +175,8 @@ class _HomeScreenState extends State<HomeScreen> {
                 child: expenses.isEmpty
                     ? Center(
                         child: Column(
-                          mainAxisAlignment: MainAxisAlignment.center,
+                          mainAxisAlignment:
+                              MainAxisAlignment.center,
                           children: [
                             Icon(
                               Icons.receipt_long,
@@ -190,15 +201,25 @@ class _HomeScreenState extends State<HomeScreen> {
 
                           return Dismissible(
                             key: Key(e["id"].toString()),
-                            direction: DismissDirection.endToStart,
+                            direction:
+                                DismissDirection.endToStart,
                             background: Container(
-                              margin: const EdgeInsets.only(bottom: 8),
+                              margin: const EdgeInsets.only(
+                                bottom: 8,
+                              ),
                               decoration: BoxDecoration(
                                 color: Colors.red[400],
-                                borderRadius: BorderRadius.circular(12),
+                                borderRadius:
+                                    BorderRadius.circular(
+                                      12,
+                                    ),
                               ),
-                              alignment: Alignment.centerRight,
-                              padding: const EdgeInsets.only(right: 20),
+                              alignment:
+                                  Alignment.centerRight,
+                              padding:
+                                  const EdgeInsets.only(
+                                    right: 20,
+                                  ),
                               child: const Icon(
                                 Icons.delete,
                                 color: Colors.white,
@@ -210,21 +231,41 @@ class _HomeScreenState extends State<HomeScreen> {
                                 builder: (BuildContext context) {
                                   return AlertDialog(
                                     shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(16),
+                                      borderRadius:
+                                          BorderRadius.circular(
+                                            16,
+                                          ),
                                     ),
-                                    title: Text(l10n.confirmDelete),
-                                    content: Text(l10n.confirmDeleteMessage),
+                                    title: Text(
+                                      l10n.confirmDelete,
+                                    ),
+                                    content: Text(
+                                      l10n.confirmDeleteMessage,
+                                    ),
                                     actions: <Widget>[
                                       TextButton(
-                                        onPressed: () => Navigator.of(context).pop(false),
-                                        child: Text(l10n.cancel),
+                                        onPressed: () =>
+                                            Navigator.of(
+                                              context,
+                                            ).pop(false),
+                                        child: Text(
+                                          l10n.cancel,
+                                        ),
                                       ),
                                       TextButton(
-                                        onPressed: () => Navigator.of(context).pop(true),
-                                        style: TextButton.styleFrom(
-                                          foregroundColor: Colors.red,
+                                        onPressed: () =>
+                                            Navigator.of(
+                                              context,
+                                            ).pop(true),
+                                        style:
+                                            TextButton.styleFrom(
+                                              foregroundColor:
+                                                  Colors
+                                                      .red,
+                                            ),
+                                        child: Text(
+                                          l10n.delete,
                                         ),
-                                        child: Text(l10n.delete),
                                       ),
                                     ],
                                   );
@@ -232,13 +273,19 @@ class _HomeScreenState extends State<HomeScreen> {
                               );
                             },
                             onDismissed: (direction) async {
-                              await DBHelper.deleteExpense(e["id"]);
+                              await DBHelper.deleteExpense(
+                                e["id"],
+                              );
                               loadExpenses();
                             },
                             child: ExpenseRow(
                               name: e["name"],
                               money: e["money"].toString(),
-                              date: DateTime.parse(e["date"]).toLocal().toString().split(' ')[0],
+                              date:
+                                  DateTime.parse(e["date"])
+                                      .toLocal()
+                                      .toString()
+                                      .split(' ')[0],
                               note: e["note"],
                             ),
                           );

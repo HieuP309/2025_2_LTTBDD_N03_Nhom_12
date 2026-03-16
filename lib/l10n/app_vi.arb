@@ -21,5 +21,14 @@
   "save": "Lưu",
   "group12": "Nhóm 12",
   "name": "Nguyễn Văn Hiếu",
-  "studentId": "MSSV: 21012058"
+  "studentId": "MSSV: 21012058",
+  "appSettings": "Cài đặt ứng dụng",
+  "customizeExperience": "Tùy chỉnh trải nghiệm của bạn",
+  "totalExpensesCount": "Tổng số khoản chi: {count}",
+  "personalExpenseManager": "Ứng dụng quản lý chi tiêu cá nhân",
+  "addNewExpense": "Thêm khoản chi mới",
+  "fillExpenseInfo": "Điền thông tin chi tiêu của bạn",
+  "expenseExample": "Ví dụ: Ăn uống, Di chuyển...",
+  "enterAmountVND": "Nhập số tiền (VNĐ)",
+  "addNoteIfNeeded": "Thêm ghi chú nếu cần..."
 }

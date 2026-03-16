@@ -6,8 +6,7 @@ import 'app_localizations.dart';
 
 /// The translations for Vietnamese (`vi`).
 class AppLocalizationsVi extends AppLocalizations {
-  AppLocalizationsVi([String locale = 'vi'])
-    : super(locale);
+  AppLocalizationsVi([String locale = 'vi']) : super(locale);
 
   @override
   String get appTitle => 'Quản lý chi tiêu';
@@ -48,8 +47,7 @@ class AppLocalizationsVi extends AppLocalizations {
   String get confirmDelete => 'Xác nhận xóa';
 
   @override
-  String get confirmDeleteMessage =>
-      'Bạn có chắc muốn xóa bản ghi này?';
+  String get confirmDeleteMessage => 'Bạn có chắc muốn xóa bản ghi này?';
 
   @override
   String get cancel => 'Hủy';
@@ -80,4 +78,33 @@ class AppLocalizationsVi extends AppLocalizations {
 
   @override
   String get studentId => 'MSSV: 21012058';
+
+  @override
+  String get appSettings => 'Cài đặt ứng dụng';
+
+  @override
+  String get customizeExperience => 'Tùy chỉnh trải nghiệm của bạn';
+
+  @override
+  String totalExpensesCount(Object count) {
+    return 'Tổng số khoản chi: $count';
+  }
+
+  @override
+  String get personalExpenseManager => 'Ứng dụng quản lý chi tiêu cá nhân';
+
+  @override
+  String get addNewExpense => 'Thêm khoản chi mới';
+
+  @override
+  String get fillExpenseInfo => 'Điền thông tin chi tiêu của bạn';
+
+  @override
+  String get expenseExample => 'Ví dụ: Ăn uống, Di chuyển...';
+
+  @override
+  String get enterAmountVND => 'Nhập số tiền (VNĐ)';
+
+  @override
+  String get addNoteIfNeeded => 'Thêm ghi chú nếu cần...';
 }

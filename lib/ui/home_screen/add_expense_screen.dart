@@ -44,7 +44,7 @@ class _AddExpenseScreenState
             children: [
               const SizedBox(height: 20),
               Text(
-                'Thêm khoản chi mới',
+                l10n.addNewExpense,
                 style: TextStyle(
                   fontSize: 24,
                   fontWeight: FontWeight.bold,
@@ -53,7 +53,7 @@ class _AddExpenseScreenState
               ),
               const SizedBox(height: 8),
               Text(
-                'Điền thông tin chi tiêu của bạn',
+                l10n.fillExpenseInfo,
                 style: TextStyle(
                   fontSize: 16,
                   color: Colors.grey[600],
@@ -66,7 +66,7 @@ class _AddExpenseScreenState
                 controller: nameController,
                 decoration: InputDecoration(
                   labelText: l10n.expenseName,
-                  hintText: 'Ví dụ: Ăn uống, Di chuyển...',
+                  hintText: l10n.expenseExample,
                   prefixIcon: const Icon(Icons.category),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -82,7 +82,7 @@ class _AddExpenseScreenState
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(
                   labelText: l10n.expenseAmount,
-                  hintText: 'Nhập số tiền (VNĐ)',
+                  hintText: l10n.enterAmountVND,
                   prefixIcon: const Icon(Icons.attach_money),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),
@@ -98,7 +98,7 @@ class _AddExpenseScreenState
                 maxLines: 3,
                 decoration: InputDecoration(
                   labelText: l10n.noteOptional,
-                  hintText: 'Thêm ghi chú nếu cần...',
+                  hintText: l10n.addNoteIfNeeded,
                   prefixIcon: const Icon(Icons.note),
                   border: OutlineInputBorder(
                     borderRadius: BorderRadius.circular(12),

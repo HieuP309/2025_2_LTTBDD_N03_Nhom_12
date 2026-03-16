@@ -32,12 +32,16 @@ class AboutScreen extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       border: Border.all(
-                        color: Theme.of(context).primaryColor,
+                        color: Theme.of(
+                          context,
+                        ).primaryColor,
                         width: 3,
                       ),
                       boxShadow: [
                         BoxShadow(
-                          color: Theme.of(context).primaryColor.withOpacity(0.2),
+                          color: Theme.of(
+                            context,
+                          ).primaryColor.withOpacity(0.2),
                           blurRadius: 10,
                           spreadRadius: 2,
                         ),
@@ -45,7 +49,9 @@ class AboutScreen extends StatelessWidget {
                     ),
                     child: const CircleAvatar(
                       radius: 60,
-                      backgroundImage: AssetImage("assets/avatar.jpg"),
+                      backgroundImage: AssetImage(
+                        "assets/avatar.jpg",
+                      ),
                     ),
                   ),
 
@@ -53,17 +59,26 @@ class AboutScreen extends StatelessWidget {
 
                   // Group info
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 8,
+                    ),
                     decoration: BoxDecoration(
-                      color: Theme.of(context).primaryColor.withOpacity(0.1),
-                      borderRadius: BorderRadius.circular(20),
+                      color: Theme.of(
+                        context,
+                      ).primaryColor.withOpacity(0.1),
+                      borderRadius: BorderRadius.circular(
+                        20,
+                      ),
                     ),
                     child: Text(
                       l10n.group12,
                       style: TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
-                        color: Theme.of(context).primaryColor,
+                        color: Theme.of(
+                          context,
+                        ).primaryColor,
                       ),
                     ),
                   ),
@@ -85,10 +100,15 @@ class AboutScreen extends StatelessWidget {
 
                   // Student ID
                   Container(
-                    padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 6),
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 12,
+                      vertical: 6,
+                    ),
                     decoration: BoxDecoration(
                       color: Colors.grey[100],
-                      borderRadius: BorderRadius.circular(12),
+                      borderRadius: BorderRadius.circular(
+                        12,
+                      ),
                     ),
                     child: Text(
                       l10n.studentId,
@@ -107,20 +127,25 @@ class AboutScreen extends StatelessWidget {
                   const SizedBox(height: 16),
 
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
+                    mainAxisAlignment:
+                        MainAxisAlignment.center,
                     children: [
                       Icon(
                         Icons.account_balance_wallet,
-                        color: Theme.of(context).primaryColor,
+                        color: Theme.of(
+                          context,
+                        ).primaryColor,
                         size: 20,
                       ),
                       const SizedBox(width: 8),
                       Text(
-                        'Expense Manager',
+                        l10n.appTitle,
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.w500,
-                          color: Theme.of(context).primaryColor,
+                          color: Theme.of(
+                            context,
+                          ).primaryColor,
                         ),
                       ),
                     ],
@@ -129,7 +154,7 @@ class AboutScreen extends StatelessWidget {
                   const SizedBox(height: 8),
 
                   Text(
-                    'Ứng dụng quản lý chi tiêu cá nhân',
+                    l10n.personalExpenseManager,
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.grey[600],

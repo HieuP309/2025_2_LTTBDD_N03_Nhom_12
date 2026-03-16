@@ -14,7 +14,9 @@ class SettingScreen extends StatefulWidget {
 class _SettingScreenState extends State<SettingScreen> {
   @override
   Widget build(BuildContext context) {
-    final localeProvider = Provider.of<LocaleProvider>(context);
+    final localeProvider = Provider.of<LocaleProvider>(
+      context,
+    );
     final l10n = AppLocalizations.of(context)!;
 
     return Scaffold(
@@ -29,7 +31,7 @@ class _SettingScreenState extends State<SettingScreen> {
           children: [
             const SizedBox(height: 20),
             Text(
-              'Cài đặt ứng dụng',
+              l10n.appSettings,
               style: TextStyle(
                 fontSize: 24,
                 fontWeight: FontWeight.bold,
@@ -38,7 +40,7 @@ class _SettingScreenState extends State<SettingScreen> {
             ),
             const SizedBox(height: 8),
             Text(
-              'Tùy chỉnh trải nghiệm của bạn',
+              l10n.customizeExperience,
               style: TextStyle(
                 fontSize: 16,
                 color: Colors.grey[600],
@@ -55,13 +57,16 @@ class _SettingScreenState extends State<SettingScreen> {
               child: Padding(
                 padding: const EdgeInsets.all(20),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                  crossAxisAlignment:
+                      CrossAxisAlignment.start,
                   children: [
                     Row(
                       children: [
                         Icon(
                           Icons.language,
-                          color: Theme.of(context).primaryColor,
+                          color: Theme.of(
+                            context,
+                          ).primaryColor,
                           size: 24,
                         ),
                         const SizedBox(width: 12),
@@ -76,42 +81,75 @@ class _SettingScreenState extends State<SettingScreen> {
                     ),
                     const SizedBox(height: 16),
                     Container(
-                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 12),
+                      padding: const EdgeInsets.symmetric(
+                        horizontal: 16,
+                        vertical: 12,
+                      ),
                       decoration: BoxDecoration(
                         color: Colors.grey[50],
-                        borderRadius: BorderRadius.circular(12),
+                        borderRadius: BorderRadius.circular(
+                          12,
+                        ),
                       ),
                       child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment:
+                            MainAxisAlignment.spaceBetween,
                         children: [
                           Text(
                             l10n.vietnamese,
                             style: TextStyle(
                               fontSize: 16,
-                              fontWeight: localeProvider.locale.languageCode == 'vi'
+                              fontWeight:
+                                  localeProvider
+                                          .locale
+                                          .languageCode ==
+                                      'vi'
                                   ? FontWeight.bold
                                   : FontWeight.normal,
-                              color: localeProvider.locale.languageCode == 'vi'
-                                  ? Theme.of(context).primaryColor
+                              color:
+                                  localeProvider
+                                          .locale
+                                          .languageCode ==
+                                      'vi'
+                                  ? Theme.of(
+                                      context,
+                                    ).primaryColor
                                   : Colors.grey[600],
                             ),
                           ),
                           Switch(
-                            value: localeProvider.locale.languageCode == 'en',
+                            value:
+                                localeProvider
+                                    .locale
+                                    .languageCode ==
+                                'en',
                             onChanged: (value) {
-                              localeProvider.toggleLanguage();
+                              localeProvider
+                                  .toggleLanguage();
                             },
-                            activeColor: Theme.of(context).primaryColor,
+                            activeColor: Theme.of(
+                              context,
+                            ).primaryColor,
                           ),
                           Text(
                             l10n.english,
                             style: TextStyle(
                               fontSize: 16,
-                              fontWeight: localeProvider.locale.languageCode == 'en'
+                              fontWeight:
+                                  localeProvider
+                                          .locale
+                                          .languageCode ==
+                                      'en'
                                   ? FontWeight.bold
                                   : FontWeight.normal,
-                              color: localeProvider.locale.languageCode == 'en'
-                                  ? Theme.of(context).primaryColor
+                              color:
+                                  localeProvider
+                                          .locale
+                                          .languageCode ==
+                                      'en'
+                                  ? Theme.of(
+                                      context,
+                                    ).primaryColor
                                   : Colors.grey[600],
                             ),
                           ),
@@ -132,7 +170,9 @@ class _SettingScreenState extends State<SettingScreen> {
                   Icon(
                     Icons.account_balance_wallet,
                     size: 48,
-                    color: Theme.of(context).primaryColor.withOpacity(0.7),
+                    color: Theme.of(
+                      context,
+                    ).primaryColor.withOpacity(0.7),
                   ),
                   const SizedBox(height: 8),
                   Text(

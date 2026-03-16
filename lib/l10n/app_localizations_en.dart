@@ -78,4 +78,33 @@ class AppLocalizationsEn extends AppLocalizations {
 
   @override
   String get studentId => 'ID: 21012058';
+
+  @override
+  String get appSettings => 'App Settings';
+
+  @override
+  String get customizeExperience => 'Customize your experience';
+
+  @override
+  String totalExpensesCount(Object count) {
+    return 'Total expenses: $count';
+  }
+
+  @override
+  String get personalExpenseManager => 'Personal expense management application';
+
+  @override
+  String get addNewExpense => 'Add new expense';
+
+  @override
+  String get fillExpenseInfo => 'Fill in your expense information';
+
+  @override
+  String get expenseExample => 'Example: Food, Transportation...';
+
+  @override
+  String get enterAmountVND => 'Enter amount (VND)';
+
+  @override
+  String get addNoteIfNeeded => 'Add note if needed...';
 }
