@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quanlychitieu/l10n/app_localizations.dart';
 import '../../database/db_helper.dart';
 
 class AddExpenseScreen extends StatefulWidget {
@@ -28,17 +29,19 @@ class _AddExpenseScreenState
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text("Thêm chi tiêu")),
+      appBar: AppBar(title: Text(l10n.addExpense)),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
           children: [
             TextField(
               controller: nameController,
-              decoration: const InputDecoration(
-                labelText: "Tên khoản chi",
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: l10n.expenseName,
+                border: const OutlineInputBorder(),
               ),
             ),
 
@@ -47,9 +50,9 @@ class _AddExpenseScreenState
             TextField(
               controller: moneyController,
               keyboardType: TextInputType.number,
-              decoration: const InputDecoration(
-                labelText: "Số tiền",
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: l10n.expenseAmount,
+                border: const OutlineInputBorder(),
               ),
             ),
 
@@ -57,9 +60,9 @@ class _AddExpenseScreenState
 
             TextField(
               controller: noteController,
-              decoration: const InputDecoration(
-                labelText: "Ghi chú (tùy chọn)",
-                border: OutlineInputBorder(),
+              decoration: InputDecoration(
+                labelText: l10n.noteOptional,
+                border: const OutlineInputBorder(),
               ),
             ),
 
@@ -67,7 +70,7 @@ class _AddExpenseScreenState
 
             ElevatedButton(
               onPressed: saveExpense,
-              child: const Text("Lưu"),
+              child: Text(l10n.save),
             ),
           ],
         ),

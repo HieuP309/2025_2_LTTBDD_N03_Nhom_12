@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quanlychitieu/l10n/app_localizations.dart';
 import '../../database/db_helper.dart';
 import 'add_expense_screen.dart';
 import 'expense_row.dart';
@@ -37,6 +38,8 @@ class _HomeScreenState extends State<HomeScreen> {
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
       backgroundColor: const Color.fromARGB(
         255,
@@ -71,7 +74,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       CrossAxisAlignment.start,
                   children: [
                     Text(
-                      "Tổng chi: $total đ",
+                      l10n.totalExpense(total),
                       style: const TextStyle(
                         fontSize: 20,
                         fontWeight: FontWeight.bold,
@@ -83,22 +86,22 @@ class _HomeScreenState extends State<HomeScreen> {
                     Row(
                       mainAxisAlignment:
                           MainAxisAlignment.spaceBetween,
-                      children: const [
+                      children: [
                         Text(
-                          "Danh mục",
-                          style: TextStyle(
+                          l10n.category,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          "Số tiền",
-                          style: TextStyle(
+                          l10n.amount,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
                         Text(
-                          "Ngày",
-                          style: TextStyle(
+                          l10n.date,
+                          style: const TextStyle(
                             fontWeight: FontWeight.bold,
                           ),
                         ),
@@ -136,11 +139,11 @@ class _HomeScreenState extends State<HomeScreen> {
                                 context: context,
                                 builder: (BuildContext context) {
                                   return AlertDialog(
-                                    title: const Text(
-                                      'Xác nhận xóa',
+                                    title: Text(
+                                      l10n.confirmDelete,
                                     ),
-                                    content: const Text(
-                                      'Bạn có chắc muốn xóa bản ghi này?',
+                                    content: Text(
+                                      l10n.confirmDeleteMessage,
                                     ),
                                     actions: <Widget>[
                                       TextButton(
@@ -148,8 +151,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Navigator.of(
                                               context,
                                             ).pop(false),
-                                        child: const Text(
-                                          'Hủy',
+                                        child: Text(
+                                          l10n.cancel,
                                         ),
                                       ),
                                       TextButton(
@@ -157,8 +160,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                             Navigator.of(
                                               context,
                                             ).pop(true),
-                                        child: const Text(
-                                          'Xóa',
+                                        child: Text(
+                                          l10n.delete,
                                         ),
                                       ),
                                     ],

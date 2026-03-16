@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
+import '../../l10n/app_localizations.dart';
+import '../../locale_provider.dart';
 
 class SettingScreen extends StatefulWidget {
   const SettingScreen({super.key});
@@ -9,37 +12,40 @@ class SettingScreen extends StatefulWidget {
 }
 
 class _SettingScreenState extends State<SettingScreen> {
-  bool isEnglish = true;
-
   @override
   Widget build(BuildContext context) {
+    final localeProvider = Provider.of<LocaleProvider>(
+      context,
+    );
+    final l10n = AppLocalizations.of(context)!;
+
     return Scaffold(
-      appBar: AppBar(title: const Text("Settings")),
+      appBar: AppBar(title: Text(l10n.settings)),
 
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            const Text(
-              "Language",
-              style: TextStyle(fontSize: 18),
+            Text(
+              l10n.language,
+              style: const TextStyle(fontSize: 18),
             ),
 
             Row(
               children: [
-                const Text("VN"),
+                Text(l10n.vietnamese),
 
                 Switch(
-                  value: isEnglish,
+                  value:
+                      localeProvider.locale.languageCode ==
+                      'en',
                   onChanged: (value) {
-                    setState(() {
-                      isEnglish = value;
-                    });
+                    localeProvider.toggleLanguage();
                   },
                 ),
 
-                const Text("EN"),
+                Text(l10n.english),
               ],
             ),
           ],

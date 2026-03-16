@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_quanlychitieu/l10n/app_localizations.dart';
 
 class AboutScreen extends StatelessWidget {
   const AboutScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
+    final l10n = AppLocalizations.of(context)!;
+
     return Center(
       child: Column(
         mainAxisAlignment: MainAxisAlignment.center,
@@ -18,9 +21,9 @@ class AboutScreen extends StatelessWidget {
 
           const SizedBox(height: 20),
 
-          const Text(
-            "Nhóm 12",
-            style: TextStyle(
+          Text(
+            l10n.group12,
+            style: const TextStyle(
               fontSize: 20,
               fontWeight: FontWeight.bold,
             ),
@@ -28,16 +31,16 @@ class AboutScreen extends StatelessWidget {
 
           const SizedBox(height: 10),
 
-          const Text(
-            "Nguyễn Văn Hiếu",
-            style: TextStyle(fontSize: 18),
+          Text(
+            l10n.name,
+            style: const TextStyle(fontSize: 18),
           ),
 
           const SizedBox(height: 5),
 
-          const Text(
-            "MSSV: 21012058",
-            style: TextStyle(
+          Text(
+            l10n.studentId,
+            style: const TextStyle(
               fontSize: 16,
               color: Colors.grey,
             ),
